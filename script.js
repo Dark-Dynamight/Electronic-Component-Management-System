@@ -44,24 +44,27 @@ loginForm.addEventListener('submit', (e) => {
     const email = document.getElementById('loginEmail').value;
     const password = document.getElementById('loginPassword').value;
     const token = document.getElementById('githubToken').value;
-    
+
     // Validate credentials
     const user = users.find(u => u.email === email && u.password === password);
-    
+
     if (user) {
         // Store current user session
         localStorage.setItem('currentUser', JSON.stringify({
             email: user.email,
             name: user.name
         }));
-        
+
         // Store GitHub token if provided
         if (token) {
             localStorage.setItem('githubToken', token);
         }
-        
+
+        // ENABLE SYNC BY DEFAULT
+        localStorage.setItem('syncEnabled', 'true');
+
         alert('Login successful! Redirecting to application...');
-        window.location.href = "./html.html"; // Replace with your actual app URL
+        window.location.href = "./html.html";
     } else {
         alert('Invalid email or password. Please try again.');
     }
@@ -75,54 +78,44 @@ registerForm.addEventListener('submit', (e) => {
     const password = document.getElementById('registerPassword').value;
     const confirmPassword = document.getElementById('registerConfirmPassword').value;
     const token = document.getElementById('registerGithubToken').value;
-    
+
     // Validate form
     if (password !== confirmPassword) {
         alert('Passwords do not match');
         return;
     }
-    
+
     // Check if user already exists
     if (users.some(u => u.email === email)) {
         alert('User with this email already exists');
         return;
     }
-    
+
     // Create new user
     const newUser = {
         name,
         email,
         password
     };
-    
+
     // Add to users array
     users.push(newUser);
     localStorage.setItem('users', JSON.stringify(users));
-    
+
     // Store current user session
     localStorage.setItem('currentUser', JSON.stringify({
         email: newUser.email,
         name: newUser.name
     }));
-    
+
     // Store GitHub token if provided
     if (token) {
         localStorage.setItem('githubToken', token);
     }
-    
-    alert('Account created successfully! Redirecting to application...');
-    window.location.href = "./html.html"; // Replace with your actual app URL
-});
-/*
-// Pre-fill demo credentials on click
-document.getElementById('loginEmail').addEventListener('focus', function() {
-    if (this.value === '') {
-        this.value = 'demo@electromanage.com';
-    }
-});
 
-document.getElementById('loginPassword').addEventListener('focus', function() {
-    if (this.value === '') {
-        this.value = 'password123';
-    }
-});*/
+    // ENABLE SYNC BY DEFAULT
+    localStorage.setItem('syncEnabled', 'true');
+
+    alert('Account created successfully! Redirecting to application...');
+    window.location.href = "./html.html";
+});

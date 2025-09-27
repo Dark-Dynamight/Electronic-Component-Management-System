@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ElectroManage - Component Management System</title>
-<link rel="stylesheet" href="./mainstyle.css">
+    <link rel="stylesheet" href="./mainstyle.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
     <!-- Header -->
     <header>
@@ -224,7 +226,7 @@
 
                 <div style="padding: 20px;">
                     <h3 style="margin-bottom: 15px; color: var(--primary);">Application Settings</h3>
-                    
+
                     <div class="form-group">
                         <label for="currencySelect">Currency</label>
                         <select id="currencySelect" class="form-control">
@@ -235,12 +237,12 @@
                             <option value="INR" selected>Indian Rupee (₹)</option>
                         </select>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="lowStockThreshold">Low Stock Threshold</label>
                         <input type="number" id="lowStockThreshold" class="form-control" value="5" min="1">
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="backupData">Data Management</label>
                         <div style="display: flex; gap: 10px; margin-top: 10px;">
@@ -253,7 +255,31 @@
                             <input type="file" id="importFile" class="file-input" accept=".json">
                         </div>
                     </div>
-                    
+                    <!-- Add this to the Settings page, after the existing form groups -->
+                    <div class="form-group">
+                        <label for="syncToggle">Cloud Sync</label>
+                        <div style="display: flex; align-items: center; gap: 10px; margin-top: 10px;">
+                            <label class="switch">
+                                <input type="checkbox" id="syncToggle">
+                                <span class="slider round"></span>
+                            </label>
+                            <span id="syncStatus">Sync disabled</span>
+                        </div>
+                        <small>Enable to sync your data across devices (requires internet)</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Sync Actions</label>
+                        <div style="display: flex; gap: 10px; margin-top: 10px;">
+                            <button class="btn btn-secondary" id="forceSyncBtn">
+                                <i class="fas fa-sync"></i> Sync Now
+                            </button>
+                            <button class="btn btn-warning" id="downloadCloudBtn">
+                                <i class="fas fa-download"></i> Download from Cloud
+                            </button>
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <label for="resetData">Reset Data</label>
                         <button class="btn btn-danger" id="resetDataBtn" style="margin-top: 10px;">
@@ -276,7 +302,8 @@
                 <input type="hidden" id="componentId">
                 <div class="form-group">
                     <label for="componentName">Component Name</label>
-                    <input type="text" id="componentName" class="form-control" placeholder="Enter component name" required>
+                    <input type="text" id="componentName" class="form-control" placeholder="Enter component name"
+                        required>
                 </div>
                 <div class="form-group">
                     <label for="componentCategory">Category</label>
@@ -295,15 +322,18 @@
                 </div>
                 <div class="form-group">
                     <label for="componentStock">Stock Quantity</label>
-                    <input type="number" id="componentStock" class="form-control" placeholder="Enter quantity" min="0" required>
+                    <input type="number" id="componentStock" class="form-control" placeholder="Enter quantity" min="0"
+                        required>
                 </div>
                 <div class="form-group">
                     <label for="componentCost">Unit Cost (<span id="currencySymbol">₹</span>)</label>
-                    <input type="number" id="componentCost" class="form-control" placeholder="Enter cost per unit" step="0.01" min="0" required>
+                    <input type="number" id="componentCost" class="form-control" placeholder="Enter cost per unit"
+                        step="0.01" min="0" required>
                 </div>
                 <div class="form-group">
                     <label for="componentDescription">Description (Optional)</label>
-                    <textarea id="componentDescription" class="form-control" placeholder="Enter component description" rows="3"></textarea>
+                    <textarea id="componentDescription" class="form-control" placeholder="Enter component description"
+                        rows="3"></textarea>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" id="cancelBtn">Cancel</button>
@@ -342,7 +372,8 @@
             </div>
         </div>
     </footer>
-<script src="./test.js"></script>
-<!--<script src="./mainscript.js"></script>-->
+    <!-- <script src="./test.js"></script> -->
+    <script type="module" src="./mainscript.js"></script>
 </body>
+
 </html>

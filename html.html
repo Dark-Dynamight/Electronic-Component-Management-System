@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ElectroManage - Component Management System</title>
+<link rel="stylesheet" href="./mainstyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-microchip"></i>
+                    <span>ElectroManage</span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#" class="nav-link active" data-page="dashboard">Dashboard</a></li>
+                        <li><a href="#" class="nav-link" data-page="components">Components</a></li>
+                        <li><a href="#" class="nav-link" data-page="cart">Cart</a></li>
+                        <li><a href="#" class="nav-link" data-page="reports">Reports</a></li>
+                        <li><a href="#" class="nav-link" data-page="settings">Settings</a></li>
+                        <li class="cart-icon" id="cartIcon">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count">0</span>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i>
+        <span id="notificationText">Operation completed successfully</span>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container main-content">
+        <!-- Dashboard Page -->
+        <div id="dashboard" class="page-section active">
+            <!-- Stats -->
+            <div class="stats">
+                <div class="stat-card">
+                    <i class="fas fa-microchip"></i>
+                    <h3 id="totalComponents">0</h3>
+                    <p>Total Components</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <h3 id="totalValue">₹0.00</h3>
+                    <p>Total Value</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-box-open"></i>
+                    <h3 id="lowStockItems">0</h3>
+                    <p>Low Stock Items</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-tags"></i>
+                    <h3 id="totalCategories">0</h3>
+                    <p>Categories</p>
+                </div>
+            </div>
+
+            <div class="dashboard">
+                <!-- Sidebar -->
+                <div class="sidebar">
+                    <h3>Categories</h3>
+                    <input type="text" class="search-box" id="searchInput" placeholder="Search components...">
+                    <ul class="categories">
+                        <li class="active" data-category="all"><i class="fas fa-microchip"></i> All Components</li>
+                        <li data-category="Microcontrollers"><i class="fas fa-brain"></i> Microcontrollers</li>
+                        <li data-category="Sensors"><i class="fas fa-satellite-dish"></i> Sensors</li>
+                        <li data-category="Actuators"><i class="fas fa-cogs"></i> Actuators</li>
+                        <li data-category="Power"><i class="fas fa-bolt"></i> Power</li>
+                        <li data-category="Connectors"><i class="fas fa-plug"></i> Connectors</li>
+                        <li data-category="ICs & Chips"><i class="fas fa-code"></i> ICs & Chips</li>
+                        <li data-category="Wireless"><i class="fas fa-wifi"></i> Wireless</li>
+                        <li data-category="Wires & Cables"><i class="fas fa-cable"></i> Wires & Cables</li>
+                        <li data-category="Tools & Equipment"><i class="fas fa-toolbox"></i> Tools & Equipment</li>
+                    </ul>
+                </div>
+
+                <!-- Component List -->
+                <div class="component-list">
+                    <div class="list-header">
+                        <h2 id="currentCategory">All Components</h2>
+                        <button class="btn btn-primary" id="addComponentBtn">
+                            <i class="fas fa-plus"></i> Add Component
+                        </button>
+                    </div>
+
+                    <div class="table-container">
+                        <table id="componentsTable">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Category</th>
+                                    <th>Stock</th>
+                                    <th>Cost</th>
+                                    <th>Total Value</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="componentsBody">
+                                <!-- Components will be loaded here dynamically -->
+                            </tbody>
+                        </table>
+                        <div id="emptyState" class="empty-state" style="display: none;">
+                            <i class="fas fa-inbox"></i>
+                            <h3>No components found</h3>
+                            <p>Add your first component by clicking the "Add Component" button</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Components Page -->
+        <div id="components" class="page-section">
+            <div class="component-list">
+                <div class="list-header">
+                    <h2>All Components</h2>
+                    <button class="btn btn-primary" id="addComponentBtn2">
+                        <i class="fas fa-plus"></i> Add Component
+                    </button>
+                </div>
+
+                <div class="table-container">
+                    <table id="componentsTable2">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th>Stock</th>
+                                <th>Cost</th>
+                                <th>Total Value</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="componentsBody2">
+                            <!-- Components will be loaded here dynamically -->
+                        </tbody>
+                    </table>
+                    <div id="emptyState2" class="empty-state" style="display: none;">
+                        <i class="fas fa-inbox"></i>
+                        <h3>No components found</h3>
+                        <p>Add your first component by clicking the "Add Component" button</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cart Page -->
+        <div id="cart" class="page-section">
+            <div class="component-list">
+                <div class="list-header">
+                    <h2>Shopping Cart</h2>
+                    <button class="btn btn-primary" id="checkoutBtn">
+                        <i class="fas fa-shopping-bag"></i> Checkout
+                    </button>
+                </div>
+
+                <div id="cartItems">
+                    <!-- Cart items will be loaded here dynamically -->
+                </div>
+
+                <div class="cart-total" id="cartTotal">
+                    Total: ₹0.00
+                </div>
+            </div>
+        </div>
+
+        <!-- Reports Page -->
+        <div id="reports" class="page-section">
+            <div class="component-list">
+                <div class="list-header">
+                    <h2>Inventory Reports</h2>
+                </div>
+
+                <div class="stats" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                    <div class="stat-card">
+                        <i class="fas fa-chart-pie"></i>
+                        <h3 id="categoryDistribution">8 Categories</h3>
+                        <p>Category Distribution</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-boxes"></i>
+                        <h3 id="totalInventory">142 Items</h3>
+                        <p>Total Inventory</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h3 id="lowStockReport">12 Items</h3>
+                        <p>Low Stock Alert</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <h3 id="totalWorth">₹1,245.75</h3>
+                        <p>Total Inventory Worth</p>
+                    </div>
+                </div>
+
+                <div style="padding: 20px;">
+                    <h3 style="margin-bottom: 15px; color: var(--primary);">Inventory Summary</h3>
+                    <div id="inventorySummary">
+                        <!-- Inventory summary will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Page -->
+        <div id="settings" class="page-section">
+            <div class="component-list">
+                <div class="list-header">
+                    <h2>Settings</h2>
+                </div>
+
+                <div style="padding: 20px;">
+                    <h3 style="margin-bottom: 15px; color: var(--primary);">Application Settings</h3>
+                    
+                    <div class="form-group">
+                        <label for="currencySelect">Currency</label>
+                        <select id="currencySelect" class="form-control">
+                            <option value="USD">US Dollar ($)</option>
+                            <option value="EUR">Euro (€)</option>
+                            <option value="GBP">British Pound (£)</option>
+                            <option value="JPY">Japanese Yen (¥)</option>
+                            <option value="INR" selected>Indian Rupee (₹)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="lowStockThreshold">Low Stock Threshold</label>
+                        <input type="number" id="lowStockThreshold" class="form-control" value="5" min="1">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="backupData">Data Management</label>
+                        <div style="display: flex; gap: 10px; margin-top: 10px;">
+                            <button class="btn btn-primary" id="exportData">
+                                <i class="fas fa-download"></i> Export Data
+                            </button>
+                            <label for="importFile" class="file-label">
+                                <i class="fas fa-upload"></i> Import Data
+                            </label>
+                            <input type="file" id="importFile" class="file-input" accept=".json">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="resetData">Reset Data</label>
+                        <button class="btn btn-danger" id="resetDataBtn" style="margin-top: 10px;">
+                            <i class="fas fa-trash"></i> Reset All Data
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Component Modal -->
+    <div class="modal" id="componentModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Add New Component</h2>
+                <span class="close">&times;</span>
+            </div>
+            <form id="componentForm">
+                <input type="hidden" id="componentId">
+                <div class="form-group">
+                    <label for="componentName">Component Name</label>
+                    <input type="text" id="componentName" class="form-control" placeholder="Enter component name" required>
+                </div>
+                <div class="form-group">
+                    <label for="componentCategory">Category</label>
+                    <select id="componentCategory" class="form-control" required>
+                        <option value="">Select a category</option>
+                        <option value="Microcontrollers">Microcontrollers</option>
+                        <option value="Sensors">Sensors</option>
+                        <option value="Actuators">Actuators</option>
+                        <option value="Power">Power</option>
+                        <option value="Connectors">Connectors</option>
+                        <option value="ICs & Chips">ICs & Chips</option>
+                        <option value="Wireless">Wireless</option>
+                        <option value="Wires & Cables">Wires & Cables</option>
+                        <option value="Tools & Equipment">Tools & Equipment</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="componentStock">Stock Quantity</label>
+                    <input type="number" id="componentStock" class="form-control" placeholder="Enter quantity" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="componentCost">Unit Cost (<span id="currencySymbol">₹</span>)</label>
+                    <input type="number" id="componentCost" class="form-control" placeholder="Enter cost per unit" step="0.01" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="componentDescription">Description (Optional)</label>
+                    <textarea id="componentDescription" class="form-control" placeholder="Enter component description" rows="3"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" id="cancelBtn">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Component</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal" id="checkoutModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Checkout</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div id="checkoutSummary">
+                <!-- Checkout summary will be loaded here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" id="cancelCheckoutBtn">Cancel</button>
+                <button type="button" class="btn btn-success" id="confirmCheckoutBtn">Confirm Purchase</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">
+                    <i class="fas fa-microchip"></i>
+                    <span>ElectroManage</span>
+                </div>
+                <p>&copy; 2023 ElectroManage - Electronic Component Management System</p>
+            </div>
+        </div>
+    </footer>
+<script src="./test.js"></script>
+<!--<script src="./mainscript.js"></script>-->
+</body>
+</html>

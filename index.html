@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>ElectroManage - Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <i class="fas fa-microchip"></i>
+            <h1>ElectroManage</h1>
+        </div>
+
+        <div class="auth-form">
+            <h2>Login to Your Account</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" class="form-control" placeholder="Enter your email" required value="demo@electromanage.com">
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" class="form-control" placeholder="Enter your password" required value="password123">
+                </div>
+                <div class="form-group">
+                    <label for="githubToken">GitHub Token (for cloud sync)</label>
+                    <input type="password" id="githubToken" class="form-control" placeholder="Enter GitHub personal access token">
+                    <small>Optional for now - add later for cloud sync</small>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+            <div class="auth-switch">
+                Don't have an account? <a href="#" id="switchToRegister">Register</a>
+            </div>
+
+            <div class="demo-credentials">
+                <h3>Demo Credentials</h3>
+                <p><strong>Email:</strong> demo@electromanage.com</p>
+                <p><strong>Password:</strong> password123</p>
+            </div>
+
+            <div class="github-help">
+                <h3>Getting GitHub Token</h3>
+                <ol>
+                    <li>Go to GitHub.com and log in</li>
+                    <li>Click your profile → Settings → Developer Settings</li>
+                    <li>Select "Personal Access Tokens" → "Tokens (classic)"</li>
+                    <li>Generate new token with "gist" scope</li>
+                    <li>Copy and paste the token above</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="auth-form" style="display: none;" id="registerForm">
+            <h2>Create Account</h2>
+            <form id="registerFormElement">
+                <div class="form-group">
+                    <label for="registerName">Full Name</label>
+                    <input type="text" id="registerName" class="form-control" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail">Email</label>
+                    <input type="email" id="registerEmail" class="form-control" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Password</label>
+                    <input type="password" id="registerPassword" class="form-control" placeholder="Create a password" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerConfirmPassword">Confirm Password</label>
+                    <input type="password" id="registerConfirmPassword" class="form-control" placeholder="Confirm your password" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerGithubToken">GitHub Token (for cloud sync)</label>
+                    <input type="password" id="registerGithubToken" class="form-control" placeholder="Enter GitHub personal access token" required>
+                    <small>Optional - add later in settings</small>
+                </div>
+                <button type="submit" class="btn btn-primary">Register</button>
+            </form>
+            <div class="auth-switch">
+                Already have an account? <a href="#" id="switchToLogin">Login</a>
+            </div>
+        </div>
+    </div>
+<script src="./script.js"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+{
+  "components": [
+    {
+      "id": "mfje5trontienmg8qd",
+      "name": "Arduino Uno R3",
+      "category": "Microcontrollers",
+      "stock": 1,
+      "cost": 280,
+      "description": "ATmega328P microcontroller board"
+    },
+    {
+      "id": "mfje5trontienmg8qd",
+      "name": "",
+      "category": "Microcontrollers",
+      "stock": 1,
+      "cost": 280,
+      "description": "ATmega328P microcontroller board"
+    }
+    {
+      "id": "mfje5troemh1dy4si8v",
+      "name": "Raspberry Pi 3 Model B",
+      "category": "Microcontrollers",
+      "stock": 1,
+      "cost": 3500,
+      "description": "4GB RAM version"
+    },
+    {
+      "id": "mfjeciimbzo3rmucncl",
+      "name": "ESP32 WIFI+BLUETOOTH",
+      "category": "Microcontrollers",
+      "stock": 1,
+      "cost": 480,
+      "description": ""
+    }
+  ],
+  "cart": [
+    {
+      "id": "mfje5troic6k9mh3c4",
+      "name": "DHT22 Temperature Sensor",
+      "price": 9.5,
+      "quantity": 1,
+      "maxQuantity": 24
+    },
+    {
+      "id": "mfje5tro6r7qhbccm18",
+      "name": "HC-SR04 Ultrasonic Sensor",
+      "price": 3.5,
+      "quantity": 1,
+      "maxQuantity": 15
+    },
+    {
+      "id": "mfje5tromg5axe7jnyl",
+      "name": "SG90 Servo Motor",
+      "price": 4.25,
+      "quantity": 1,
+      "maxQuantity": 20
+    }
+  ],
+  "currency": "INR",
+  "lowStockThreshold": 5,
+  "exportDate": "2025-09-14T12:54:28.835Z"
+}
